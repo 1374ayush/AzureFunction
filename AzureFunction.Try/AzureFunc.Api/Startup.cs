@@ -1,5 +1,6 @@
 ﻿using AzureFunc.Api;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
+using Microsoft.Azure.Functions.Worker.Middleware;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,12 @@ namespace AzureFunc.Api
         public override void Configure(IFunctionsHostBuilder builder)
         {
             //we can add services here.
+
+            // Register custom middleware
+            builder.Services.AddSingleton<IFunctionsWorkerMiddleware, CustomLoggingMiddleware>();
+
+            // Add other services here, e.g., logging
+            builder.Services.AddLogging();
         }
     }
 }
