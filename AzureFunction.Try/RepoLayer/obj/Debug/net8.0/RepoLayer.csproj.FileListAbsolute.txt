@@ -1,0 +1,12 @@
+C:\Users\ayushsrivastava03\OneDrive - Nagarro\Desktop\AzureFunction\AzureFunction.Try\RepoLayer\bin\Debug\net8.0\RepoLayer.deps.json
+C:\Users\ayushsrivastava03\OneDrive - Nagarro\Desktop\AzureFunction\AzureFunction.Try\RepoLayer\bin\Debug\net8.0\RepoLayer.dll
+C:\Users\ayushsrivastava03\OneDrive - Nagarro\Desktop\AzureFunction\AzureFunction.Try\RepoLayer\bin\Debug\net8.0\RepoLayer.pdb
+C:\Users\ayushsrivastava03\OneDrive - Nagarro\Desktop\AzureFunction\AzureFunction.Try\RepoLayer\obj\Debug\net8.0\RepoLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ayushsrivastava03\OneDrive - Nagarro\Desktop\AzureFunction\AzureFunction.Try\RepoLayer\obj\Debug\net8.0\RepoLayer.AssemblyInfoInputs.cache
+C:\Users\ayushsrivastava03\OneDrive - Nagarro\Desktop\AzureFunction\AzureFunction.Try\RepoLayer\obj\Debug\net8.0\RepoLayer.AssemblyInfo.cs
+C:\Users\ayushsrivastava03\OneDrive - Nagarro\Desktop\AzureFunction\AzureFunction.Try\RepoLayer\obj\Debug\net8.0\RepoLayer.csproj.CoreCompileInputs.cache
+C:\Users\ayushsrivastava03\OneDrive - Nagarro\Desktop\AzureFunction\AzureFunction.Try\RepoLayer\obj\Debug\net8.0\RepoLayer.sourcelink.json
+C:\Users\ayushsrivastava03\OneDrive - Nagarro\Desktop\AzureFunction\AzureFunction.Try\RepoLayer\obj\Debug\net8.0\RepoLayer.dll
+C:\Users\ayushsrivastava03\OneDrive - Nagarro\Desktop\AzureFunction\AzureFunction.Try\RepoLayer\obj\Debug\net8.0\refint\RepoLayer.dll
+C:\Users\ayushsrivastava03\OneDrive - Nagarro\Desktop\AzureFunction\AzureFunction.Try\RepoLayer\obj\Debug\net8.0\RepoLayer.pdb
+C:\Users\ayushsrivastava03\OneDrive - Nagarro\Desktop\AzureFunction\AzureFunction.Try\RepoLayer\obj\Debug\net8.0\ref\RepoLayer.dll

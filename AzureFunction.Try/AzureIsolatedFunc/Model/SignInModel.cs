@@ -1,4 +1,4 @@
-﻿namespace AzureIsolatedFunc
+﻿namespace AzureIsolatedFunc.Model
 {
     public class SignInModel
     {

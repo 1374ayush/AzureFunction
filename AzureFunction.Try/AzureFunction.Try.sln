@@ -5,6 +5,8 @@ VisualStudioVersion = 17.8.34408.163
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureIsolatedFunc", "AzureIsolatedFunc\AzureIsolatedFunc.csproj", "{4B74C968-DC70-4C9A-89A0-3311A524AF19}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepoLayer", "RepoLayer\RepoLayer.csproj", "{B482C32D-54E5-4EC4-A794-588D894B7E18}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{4B74C968-DC70-4C9A-89A0-3311A524AF19}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B74C968-DC70-4C9A-89A0-3311A524AF19}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B74C968-DC70-4C9A-89A0-3311A524AF19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B482C32D-54E5-4EC4-A794-588D894B7E18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B482C32D-54E5-4EC4-A794-588D894B7E18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B482C32D-54E5-4EC4-A794-588D894B7E18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B482C32D-54E5-4EC4-A794-588D894B7E18}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

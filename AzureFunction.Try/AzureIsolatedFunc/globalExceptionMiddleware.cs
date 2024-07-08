@@ -1,17 +1,10 @@
 ﻿using AzureIsolatedFunc.Model;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Azure.Functions.Worker.Middleware;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AzureIsolatedFunc
 {
@@ -49,7 +42,7 @@ namespace AzureIsolatedFunc
 
             var errorResponse = new ErrorResponsee
             {
-                Success = false,
+                Status = "fail",
                 Message = exception.Message
             };
 

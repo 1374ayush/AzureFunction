@@ -2,6 +2,8 @@ using AzureIsolatedFunc;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using RepoLayer;
+using System.Reflection;
 
 var host = new HostBuilder()
      .ConfigureFunctionsWebApplication((worker) =>
@@ -11,6 +13,9 @@ var host = new HostBuilder()
      })
     .ConfigureServices(services =>
     {
+        services.AddScoped<ICrudRepo, CrudRepo>();
+        services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+
         /*services.AddSingleton<IFunctionsWorkerMiddleware, CustomLoggingMiddleware>();*/
         services.AddApplicationInsightsTelemetryWorkerService();
         services.ConfigureFunctionsApplicationInsights();

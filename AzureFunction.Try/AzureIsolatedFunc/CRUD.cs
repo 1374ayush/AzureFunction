@@ -1,50 +1,60 @@
+using AzureIsolatedFunc.CQRS.QueryCommandClasses;
+using AzureIsolatedFunc.Model;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using RepoLayer;
 
 namespace AzureIsolatedFunc
 {
     public class CRUD
     {
         private readonly ILogger<CRUD> _logger;
+        private readonly IMediator _medi;
 
-        public CRUD(ILogger<CRUD> logger)
+        public CRUD(ILogger<CRUD> logger, IMediator medi)
         {
             _logger = logger;
+            _medi = medi;
         }
 
-        [Function("Login")]
-        public async Task<IActionResult> Login(
-             [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = "login")] HttpRequest req,
-             ILogger log)
+        [Function("Get")]
+        public async Task<IActionResult> Get(
+             [HttpTrigger(AuthorizationLevel.Function, "get")] HttpRequest req)
         {
-            log.LogInformation("C# HTTP login trigger function processed a request.");
+            _logger.LogInformation("Get Request");
 
             string name = req.Query["name"];
 
-            /* string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-             SignInModel user = JsonConvert.DeserializeObject<SignInModel>(requestBody);
+            //calling mediator to send requ to handler
+            var res = await _medi.Send(new GetQuery());
 
-             if (user == null || string.IsNullOrEmpty(user.Email) || string.IsNullOrEmpty(user.Password))
-             {
-                 return new BadRequestObjectResult("Please provide both username and password.");
-             }*/
-
-            string responseMessage = string.IsNullOrEmpty(name)
-                ? "Post request hit"
-                : $"Get request hit {name}";
-
-            return new OkObjectResult(responseMessage);
+            return new OkObjectResult(res);
         }
 
-        [Function("Update")]
-        public async Task<IActionResult> UpdateUser(
-           [HttpTrigger(AuthorizationLevel.Function, "put", Route = "users/{id}")] HttpRequest req,
-        ILogger log, int id)
+        [Function("Create")]
+        public async Task<IActionResult> Create(
+             [HttpTrigger(AuthorizationLevel.Function, "post")] HttpRequest req)
         {
-            log.LogInformation($"Processing update request for user with ID {id}.");
+            _logger.LogInformation("Create request");
+
+            string name = req.Query["name"];
+
+            string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+            TestModel user = JsonConvert.DeserializeObject<TestModel>(requestBody);
+
+            var res = await _medi.Send(new AddCommand(user.Id, user.Name, user.Description));
+
+            return new OkObjectResult(res);
+        }
+
+     /*   [Function("Update")]
+        public async Task<IActionResult> UpdateUser([HttpTrigger(AuthorizationLevel.Function, "get", "post")] HttpRequest req, int id)
+        {
+            _logger.LogInformation($"Processing update request for user with ID {id}.");
 
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             SignInModel user = JsonConvert.DeserializeObject<SignInModel>(requestBody);
@@ -57,16 +67,16 @@ namespace AzureIsolatedFunc
 
             //updation logic for inmemory, similarly we can create a endpoint for deleting the data of specific id
 
-            /*  SignInModel existingUser = users.FirstOrDefault(u => u.Id == id);
+            *//*  SignInModel existingUser = users.FirstOrDefault(u => u.Id == id);
               if (existingUser == null)
               {
                   return new NotFoundObjectResult("User not found.");
               }
 
               existingUser.Username = updatedUser.Username;
-              existingUser.Password = updatedUser.Password;*/
+              existingUser.Password = updatedUser.Password;*//*
 
             return new OkObjectResult($"User updated successfully. {id}");
-        }
+        }*/
     }
 }
