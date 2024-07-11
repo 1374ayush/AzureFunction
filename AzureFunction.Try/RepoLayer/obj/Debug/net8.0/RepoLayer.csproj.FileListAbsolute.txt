@@ -10,3 +10,4 @@ C:\Users\ayushsrivastava03\OneDrive - Nagarro\Desktop\AzureFunction\AzureFunctio
 C:\Users\ayushsrivastava03\OneDrive - Nagarro\Desktop\AzureFunction\AzureFunction.Try\RepoLayer\obj\Debug\net8.0\refint\RepoLayer.dll
 C:\Users\ayushsrivastava03\OneDrive - Nagarro\Desktop\AzureFunction\AzureFunction.Try\RepoLayer\obj\Debug\net8.0\RepoLayer.pdb
 C:\Users\ayushsrivastava03\OneDrive - Nagarro\Desktop\AzureFunction\AzureFunction.Try\RepoLayer\obj\Debug\net8.0\ref\RepoLayer.dll
+C:\Users\ayushsrivastava03\OneDrive - Nagarro\Desktop\AzureFunction\AzureFunction.Try\RepoLayer\obj\Debug\net8.0\RepoLayer.csproj.AssemblyReference.cache

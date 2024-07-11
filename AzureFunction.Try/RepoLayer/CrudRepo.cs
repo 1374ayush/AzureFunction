@@ -1,4 +1,7 @@
-﻿using System;
+﻿
+using AzureIsolatedFunc.CustomErrors;
+using AzureIsolatedFunc.FluentValidation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +13,19 @@ namespace RepoLayer
     {
         public async Task<string> AddData(TestModel model)
         {
+
+            //fluent validation 
+
+            var validator = new FluentValidatorr();
+            var validationResult = validator.Validate(model);
+
+            if (!validationResult.IsValid)
+            {
+                var errorMessages = validationResult.Errors.Select(e => e.ErrorMessage).ToList();
+                throw new ValidationException(errorMessages);
+            }
+
+
             Console.WriteLine("Data Added");
             return "Added";
         }

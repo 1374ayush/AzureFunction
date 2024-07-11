@@ -1,14 +1,15 @@
 using AzureIsolatedFunc.CQRS.QueryCommandClasses;
-using AzureIsolatedFunc.Model;
+using AzureIsolatedFunc.FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using RepoLayer;
 
-namespace AzureIsolatedFunc
+namespace AzureIsolatedFunc.Functions
 {
     public class CRUD
     {
@@ -41,8 +42,6 @@ namespace AzureIsolatedFunc
         {
             _logger.LogInformation("Create request");
 
-            string name = req.Query["name"];
-
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             TestModel user = JsonConvert.DeserializeObject<TestModel>(requestBody);
 
@@ -51,32 +50,32 @@ namespace AzureIsolatedFunc
             return new OkObjectResult(res);
         }
 
-     /*   [Function("Update")]
-        public async Task<IActionResult> UpdateUser([HttpTrigger(AuthorizationLevel.Function, "get", "post")] HttpRequest req, int id)
-        {
-            _logger.LogInformation($"Processing update request for user with ID {id}.");
+        /*   [Function("Update")]
+           public async Task<IActionResult> UpdateUser([HttpTrigger(AuthorizationLevel.Function, "get", "post")] HttpRequest req, int id)
+           {
+               _logger.LogInformation($"Processing update request for user with ID {id}.");
 
-            string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-            SignInModel user = JsonConvert.DeserializeObject<SignInModel>(requestBody);
+               string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+               SignInModel user = JsonConvert.DeserializeObject<SignInModel>(requestBody);
 
-            // Validate the user model
-            if (user == null || string.IsNullOrEmpty(user.Email) || string.IsNullOrEmpty(user.Password))
-            {
-                return new BadRequestObjectResult("error");
-            }
+               // Validate the user model
+               if (user == null || string.IsNullOrEmpty(user.Email) || string.IsNullOrEmpty(user.Password))
+               {
+                   return new BadRequestObjectResult("error");
+               }
 
-            //updation logic for inmemory, similarly we can create a endpoint for deleting the data of specific id
+               //updation logic for inmemory, similarly we can create a endpoint for deleting the data of specific id
 
-            *//*  SignInModel existingUser = users.FirstOrDefault(u => u.Id == id);
-              if (existingUser == null)
-              {
-                  return new NotFoundObjectResult("User not found.");
-              }
+               *//*  SignInModel existingUser = users.FirstOrDefault(u => u.Id == id);
+                 if (existingUser == null)
+                 {
+                     return new NotFoundObjectResult("User not found.");
+                 }
 
-              existingUser.Username = updatedUser.Username;
-              existingUser.Password = updatedUser.Password;*//*
+                 existingUser.Username = updatedUser.Username;
+                 existingUser.Password = updatedUser.Password;*//*
 
-            return new OkObjectResult($"User updated successfully. {id}");
-        }*/
+               return new OkObjectResult($"User updated successfully. {id}");
+           }*/
     }
 }

@@ -1,4 +1,4 @@
-using AzureIsolatedFunc;
+using AzureIsolatedFunc.Middlewares;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -10,6 +10,8 @@ var host = new HostBuilder()
      {
          // The worker.UseMiddleware is required to add middleware to the pipeline
          worker.UseMiddleware<globalExceptionMiddleware>();
+
+        /* worker.UseMiddleware<FluentValidationMiddleware>();*/
      })
     .ConfigureServices(services =>
     {

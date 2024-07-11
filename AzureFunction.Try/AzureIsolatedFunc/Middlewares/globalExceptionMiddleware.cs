@@ -1,4 +1,5 @@
-﻿using AzureIsolatedFunc.Model;
+﻿using AzureIsolatedFunc.CustomErrors;
+using AzureIsolatedFunc.Model;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Azure.Functions.Worker.Middleware;
@@ -6,7 +7,7 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System.Net;
 
-namespace AzureIsolatedFunc
+namespace AzureIsolatedFunc.Middlewares
 {
     public class globalExceptionMiddleware : IFunctionsWorkerMiddleware
     {
@@ -40,13 +41,25 @@ namespace AzureIsolatedFunc
 
             response.Headers.Add("Content-Type", "application/json");
 
-            var errorResponse = new ErrorResponsee
+
+            var errorResponse = new ErrorResponsee<object>
             {
-                Status = "fail",
-                Message = exception.Message
+                Status = "fail"
             };
 
-            response.StatusCode = HttpStatusCode.InternalServerError;
+            switch (exception)
+            {
+                case ValidationException validationException:
+                    response.StatusCode = HttpStatusCode.BadRequest;
+                    errorResponse.Message = validationException.Errors;
+                    break;
+
+
+                default:
+                    response.StatusCode = HttpStatusCode.InternalServerError;
+                    errorResponse.Message = "Internal server error!";
+                    break;
+            }
 
             using (var stringWriter = new StringWriter())
             {
@@ -61,5 +74,5 @@ namespace AzureIsolatedFunc
 
         }
     }
-        //await context.Response.WriteAsync("error occured");
+    //await context.Response.WriteAsync("error occured");
 }
